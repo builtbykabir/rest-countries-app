@@ -1,10 +1,47 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+:root {
+  --font-family: "Nunito Sans", sans-serif;
+
+  /* Light Mode */
+  --bg-page: hsl(0, 0%, 99%); /* Grey 50 */
+  --bg-surface: hsl(0, 100%, 100%); /* White (cards, inputs) */
+  --bg-footer: hsl(0, 100%, 100%); /* White */
+
+  --text-primary: hsl(200, 15%, 8%); /* Grey 950 */
+  --text-secondary: hsl(0, 0%, 50%); /* Grey 400 */
+
+  --shadow-sm: rgba(0, 0, 0, 0.06);
+  --shadow-md: rgba(0, 0, 0, 0.08);
+  --shadow-lg: rgba(0, 0, 0, 0.12);
+  --shadow-nav: rgba(0, 0, 0, 0.1);
+}
+
+body.dark {
+  /* Dark Mode */
+  --bg-page: hsl(207, 26%, 17%); /* Blue 950 */
+  --bg-surface: hsl(209, 23%, 22%); /* Blue 900 */
+  --bg-footer: hsl(209, 23%, 22%); /* Blue 900 */
+
+  --text-primary: hsl(0, 100%, 100%); /* White */
+  --text-secondary: hsl(0, 100%, 100%); /* White */
+
+  --shadow-sm: rgba(0, 0, 0, 0.3);
+  --shadow-md: rgba(0, 0, 0, 0.4);
+  --shadow-lg: rgba(0, 0, 0, 0.6);
+  --shadow-nav: rgba(0, 0, 0, 0.4);
+}
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: var(--font-family);
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
 }
 
 h1 {
@@ -17,7 +54,8 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-surface);
+  box-shadow: 0 4px 4px var(--shadow-nav);
 }
 
 .nav-bar h1 a {
@@ -29,8 +67,8 @@ h1 {
   text-decoration: underline;
 }
 
-body {
-  min-height: 100vh;
+.nav-bar p:hover {
+  cursor: pointer;
 }
 
 main {
@@ -56,29 +94,28 @@ main {
   margin: 1rem 0;
   overflow: hidden;
   border-radius: 5px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.08);
+  background-color: var(--bg-surface);
+  box-shadow: 0 1px 2px var(--shadow-sm), 0 4px 12px var(--shadow-md);
   transition: transform 200ms ease, box-shadow 200ms ease;
 }
 
 .card:hover {
   transform: scale(1.03);
-
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08), 0 12px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 6px var(--shadow-md), 0 12px 24px var(--shadow-lg);
 }
 
 .card a {
-  text-decoration-line: none;
+  text-decoration: none;
   color: inherit;
   display: flex;
   flex-direction: column;
-  align-items: left;
   justify-content: space-around;
 }
 
 .card img {
   width: 100%;
-  object-fit: cover;
   height: 167px;
+  object-fit: cover;
   object-position: center;
 }
 
@@ -88,14 +125,11 @@ main {
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  align-items: left;
   justify-content: space-evenly;
 }
 
 .details {
   display: flex;
-  width: 100%;
-  height: 100%;
   flex-direction: column;
   font-size: 0.8rem;
   font-weight: 600;
@@ -112,10 +146,10 @@ h2 {
 footer {
   text-align: center;
   font-size: 0.875rem;
-  color: #555;
+  color: var(--text-secondary);
   padding: 2rem 1rem;
-  background-color: #fafafa;
-  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-footer);
+  box-shadow: 0 -2px 6px var(--shadow-nav);
 }
 
 footer p {
@@ -123,13 +157,13 @@ footer p {
 }
 
 footer a {
-  color: #555;
+  color: var(--text-secondary);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 footer a:hover {
-  color: #111;
+  color: var(--text-primary);
   text-decoration: underline;
 }
 
@@ -147,7 +181,9 @@ footer a:hover {
   padding: 0.75rem 1rem;
   border: none;
   border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  box-shadow: 0 2px 6px var(--shadow-nav);
   font-size: 0.9rem;
 }
 
@@ -160,9 +196,10 @@ footer a:hover {
   padding: 0.75rem 1rem;
   border: none;
   border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  box-shadow: 0 2px 6px var(--shadow-nav);
   font-size: 0.9rem;
-  background-color: #fff;
   cursor: pointer;
 }
 

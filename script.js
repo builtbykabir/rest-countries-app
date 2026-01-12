@@ -70,3 +70,20 @@ function applyFilters() {
 searchInput.addEventListener("input", applyFilters);
 regionSelect.addEventListener("change", applyFilters);
 
+const toggle = document.querySelector(".theme-toggle");
+const icon = toggle.querySelector("i");
+
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
+  icon.classList.replace("fa-moon", "fa-sun");
+}
+
+toggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+
+  const isDark = document.body.classList.contains("dark");
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+
+  icon.classList.toggle("fa-moon");
+  icon.classList.toggle("fa-sun");
+});
